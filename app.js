@@ -9,6 +9,7 @@ function Product(name, filepath, showCount, clickCount) {
   this.clickCount = clickCount;
   allProducts.push(this);
 }
+var previousSelection = {};
 
 new Product('bag', 'img/bag.jpg');
 new Product('banana', 'img/banana.jpg');
@@ -36,10 +37,12 @@ function displayRandomProduct() {
   let currentSelection = {};
   function randomIndexGen () {
     let randInd = Math.floor(Math.random() * allProducts.length);
-    while (currentSelection[randInd]) {
+    while (currentSelection[randInd] || previousSelection[randInd]) {
       randInd = Math.floor(Math.random() * allProducts.length);
     }
     currentSelection[randInd] = 1;
+    console.log('CURRENT: ', currentSelection);
+    console.log('PREVIOUS: ', previousSelection);
     return randInd;
   }
 
@@ -54,6 +57,7 @@ function displayRandomProduct() {
   singleImg('product-pic1');
   singleImg('product-pic2');
   singleImg('product-pic3');
+  previousSelection = currentSelection;
 }
 
 displayRandomProduct();
