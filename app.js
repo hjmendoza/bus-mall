@@ -67,10 +67,6 @@ function displayRandomProduct(){
 
 function handleClick(event){
   console.log(Product.totalClicks, 'total clicks');
-  if(Product.totalClicks === 25){
-    Product.container.removeEventListener('click', handleClick);
-    displayChart();
-  }
   if(event.target.id === 'image-container'){
     return alert('Please click on an image.');
   }
@@ -81,34 +77,22 @@ function handleClick(event){
       console.log(event.target.id + ' has ' + Product.all[i].votes + ' votes in ' + Product.all[i].views + ' views.');
     }
   }
+  if(Product.totalClicks > 25){
+    Product.container.removeEventListener('click', handleClick);
+    displayChart();
+  }
   displayRandomProduct();
 }
-
-// function showTally(){
-//   for(var i = 0; i < Product.all.length; i++){
-//     var liEl = document.createElement('li');
-//     liEl.textContent = Product.all[i].name + ' has ' + Product.all[i].votes + ' votes in ' + Product.all[i].views + ' views.';
-//     Product.tally.appendChild(liEl);
-//   }
-// }
 
 Product.container.addEventListener('click', handleClick);
 displayRandomProduct();
 
 function displayChart(){
   var data = [];
-  // var labelName = [];
   var labelColors = 'red';
   for(var i = 0; i < Product.all.length; i++){
     data.push(Product.all[i].votes);
   }
-
-  // for(var j=0; j < Product.all.length; j++){
-  //   var names = data[j].Product.name;
-  //   labelName.push(names);
-  // }
-  //this is the name for each product
-  // var labelColors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange'];
 
   var ctx = document.getElementById('chart').getContext('2d');
 
