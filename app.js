@@ -5,7 +5,7 @@ Product.container = document.getElementById('image_container');
 Product.justViewed = [];
 Product.pics = [document.getElementById('pic1'), document.getElementById('pic2'), document.getElementById('pic3')];
 Product.tally = document.getElementById('tally');
-Product.totalClicks = 0;
+Product.totalClicks = 1;
 
 
 function Product(name, filepath) {
@@ -67,9 +67,9 @@ function displayRandomProduct(){
 
 function handleClick(event){
   console.log(Product.totalClicks, 'total clicks');
-  if(Product.totalClicks > 24){
+  if(Product.totalClicks === 25){
     Product.container.removeEventListener('click', handleClick);
-    showTally();
+    displayChart();
   }
   if(event.target.id === 'image-container'){
     return alert('Please click on an image.');
@@ -84,14 +84,52 @@ function handleClick(event){
   displayRandomProduct();
 }
 
-function showTally(){
-  for(var i = 0; i < Product.all.length; i++){
-    var liEl = document.createElement('li');
-    liEl.textContent = Product.all[i].name + ' has ' + Product.all[i].votes + ' votes in ' + Product.all[i].views + ' views.';
-    Product.tally.appendChild(liEl);
-  }
-}
+// function showTally(){
+//   for(var i = 0; i < Product.all.length; i++){
+//     var liEl = document.createElement('li');
+//     liEl.textContent = Product.all[i].name + ' has ' + Product.all[i].votes + ' votes in ' + Product.all[i].views + ' views.';
+//     Product.tally.appendChild(liEl);
+//   }
+// }
 
 Product.container.addEventListener('click', handleClick);
 displayRandomProduct();
 
+function displayChart(){
+  var data = [];
+  // var labelName = [];
+  var labelColors = 'red';
+  for(var i = 0; i < Product.all.length; i++){
+    data.push(Product.all[i].votes);
+  }
+
+  // for(var j=0; j < Product.all.length; j++){
+  //   var names = data[j].Product.name;
+  //   labelName.push(names);
+  // }
+  //this is the name for each product
+  // var labelColors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange'];
+
+  var ctx = document.getElementById('chart').getContext('2d');
+
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'],
+      datasets: [{
+        label: '# of Votes',
+        data: data,
+        backgroundColor: labelColors
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
