@@ -67,7 +67,7 @@ function displayRandomProduct(){
 
 function handleClick(event){
   console.log(Product.totalClicks, 'total clicks');
-  if(event.target.id === 'image-container'){
+  if(event.target.id === 'image_container'){
     return alert('Please click on an image.');
   }
   Product.totalClicks += 1;
