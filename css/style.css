@@ -1,5 +1,25 @@
+h1{
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+p{
+  font-size: 18px;
+  padding: 20px;
+  text-align: center;
+}
 img{
   width: 300px;
   height: 300px;
-  margin-left: 30px;
+  margin: 30px;
+  border: 1px solid #021a40;
+
+}
+#image_container{
+  text-align: center;
+}
+canvas{
+  width: 300px;
+  height: 300px;
 }
