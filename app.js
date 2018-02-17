@@ -93,7 +93,6 @@ displayRandomProduct();
 
 function displayChart(){
   var data = [];
-  var labelColors = 'red';
   for(var i = 0; i < Product.all.length; i++){
     data.push(Product.all[i].votes);
   }
@@ -107,7 +106,7 @@ function displayChart(){
       datasets: [{
         label: '# of Votes',
         data: data,
-        backgroundColor: labelColors
+        backgroundColor: 'orange',
       }]
     },
     options: {

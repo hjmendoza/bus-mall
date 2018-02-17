@@ -1,10 +1,21 @@
+
 h1{
-  font-size: 30px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9c667+2,f79621+74 */
+  background: #f9c667; /* Old browsers */
+  background: -moz-linear-gradient(top, #f9c667 2%, #f79621 74%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #f9c667 2%,#f79621 74%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #f9c667 2%,#f79621 74%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#f79621',GradientType=0 ); /* IE6-9 */
+
 }
 p{
+  font-family: sans-serif;
   font-size: 18px;
   padding: 20px;
   text-align: center;
